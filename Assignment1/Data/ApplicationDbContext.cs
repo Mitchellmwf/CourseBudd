@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CourseBudd.Models;
 
 namespace Assignment1.Data
 {
@@ -9,5 +10,7 @@ namespace Assignment1.Data
             : base(options)
         {
         }
+        public DbSet<CourseBudd.Models.Module> Module { get; set; } = default!;
+        public DbSet<CourseBudd.Models.Subject> Subject { get; set; } = default!;
     }
 }
