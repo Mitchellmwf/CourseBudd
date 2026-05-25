@@ -6,7 +6,8 @@ namespace CourseBudd.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var subjects = new List<CourseBudd.Models.Subject>();
+            return View(subjects);
         }
         public IActionResult Create()
         {

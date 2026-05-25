@@ -2,6 +2,7 @@
 {
     public class Module
     {
+        // PK
         public int ModuleId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

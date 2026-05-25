@@ -6,7 +6,8 @@ namespace CourseBudd.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var modules = new List<CourseBudd.Models.Module>();
+            return View(modules);
         }
         public IActionResult Create()
         {
