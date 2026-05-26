@@ -9,7 +9,7 @@
         // FK
         public int SubjectId { get; set; }
         // parent ref
-        public Subject Subject { get; set; }
+        public Subject? Subject { get; set; }
 
     }
 }
