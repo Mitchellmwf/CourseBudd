@@ -1,4 +1,4 @@
-﻿using Assignment1.Data;
+﻿using CourseBudd.Data;
 using CourseBudd.Models;
 using Microsoft.AspNetCore.Mvc;
 

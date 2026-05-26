@@ -1,4 +1,4 @@
-namespace Assignment1.Models
+namespace CourseBudd.Models
 {
     public class ErrorViewModel
     {

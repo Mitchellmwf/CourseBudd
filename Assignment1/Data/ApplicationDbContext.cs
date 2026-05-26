@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using CourseBudd.Models;
 
-namespace Assignment1.Data
+namespace CourseBudd.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

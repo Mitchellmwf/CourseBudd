@@ -1,8 +1,7 @@
-﻿using Assignment1.Data;
+﻿using CourseBudd.Data;
 using CourseBudd.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Tasks.Deployment.Bootstrapper;
-using System.Runtime.Intrinsics.Arm;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseBudd.Controllers
 {
@@ -21,12 +20,12 @@ namespace CourseBudd.Controllers
         public IActionResult Index()
         {
             // Product list to pass to view
-            var modules = new List<Module>();
+            var modules = _context.Module.OrderBy(m => m.Name).ToList();
             return View(modules);
         }
         public IActionResult Create()
         {
-            // fetch Subjects for dropdown in the view
+            // fetch subjects for dropdown in the view
             ViewBag.SubjectId = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Subject.OrderBy(s => s.Name).ToList(), "SubjectId", "Name");
             return View();
         }
@@ -46,9 +45,46 @@ namespace CourseBudd.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            // fetch subjects for dropdown in the view
+            ViewBag.SubjectId = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(_context.Subject.OrderBy(s => s.Name).ToList(), "SubjectId", "Name");
+            // find module to edit
+            var module = _context.Module.Find(id);
+
+            if (module == null)
+            {
+                return NotFound();
+            }
+
+            return View(module);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("ModuleId, Name, Description, SubjectId")] Module module)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(module);
+            }
+            // update and save
+            _context.Module.Update(module);
+            _context.SaveChanges();
+            // redirect
+            return RedirectToAction(nameof(Index));
+        }
+    public IActionResult Delete(int id)
+        {
+            // find module to delete
+            var module = _context.Module.Find(id);
+
+            if (module == null)
+            {
+                return NotFound();
+            }
+            _context.Module.Remove(module);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

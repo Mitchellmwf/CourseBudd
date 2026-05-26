@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Assignment1.Models;
+using CourseBudd.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Assignment1.Controllers
+namespace CourseBudd.Controllers
 {
     public class HomeController : Controller
     {

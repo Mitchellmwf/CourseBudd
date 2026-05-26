@@ -1,4 +1,4 @@
-using Assignment1.Data;
+using CourseBudd.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
