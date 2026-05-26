@@ -20,7 +20,8 @@ namespace CourseBudd.Controllers
         public IActionResult Index()
         {
             // Product list to pass to view
-            var modules = _context.Module.OrderBy(m => m.Name).ToList();
+            // Use include to load the needed subject data to show the subject name via Eager Loading https://stackoverflow.com/questions/40409133/entity-framework-include-single-object-from-one-to-many-relationship
+            var modules = _context.Module.Include(m => m.Subject).OrderBy(m => m.Subject.Name).ThenBy(m => m.Name).ToList();
             return View(modules);
         }
         public IActionResult Create()
